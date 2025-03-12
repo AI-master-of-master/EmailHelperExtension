@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MailGenie</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>MailGenie</h1>
+    <textarea id="inputEmail" placeholder="ここに返信するメールを貼り付けてください..."></textarea>
+
+    <div class="options">
+      <div class="language-select">
+        <label for="language">生成する言語を選択してください：</label>
+        <select id="language">
+          <option value="ja">日本語</option>
+          <option value="zh-CN">中文 (简体)</option>
+          <option value="zh-TW">中文 (繁體)</option>
+          <option value="en">English</option>
+          <option value="ko">한국어</option>
+        </select>
+      </div>
+
+      <div class="purpose-select">
+        <label for="purpose">用途を選択：</label>
+        <select id="purpose">
+          <option value="General Inquiry">一般問い合わせ</option>
+          <option value="Business">ビジネス</option>
+          <option value="Casual">カジュアル</option>
+        </select>
+      </div>
+
+      <div class="tone-select">
+        <label for="tone">トーンを選択：</label>
+        <select id="tone">
+          <option value="formal">フォーマル</option>
+          <option value="casual">カジュアル</option>
+          <option value="friendly">フレンドリー</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="generateBtn" class="btn">返信を生成</button>
+    
+    <div id="errorBox" class="error-box" style="display: none;">
+      <p id="errorText"></p>
+    </div>
+
+    <div class="response-box" id="responseBox">
+      <p id="responseText">生成された返信はここに表示されます</p>
+    </div>
+
+    <div class="options">
+      <button id="copyBtn" class="btn">クリップボードにコピー</button>
+      <button id="retryBtn" class="btn">再生成</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
