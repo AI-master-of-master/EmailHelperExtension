@@ -1,4 +1,4 @@
-// Generate Reply
+// 返信を生成
 document.addEventListener("DOMContentLoaded", function () {
     const generateBtn = document.getElementById("generateBtn");
     const responseText = document.getElementById("responseText");
@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // 清空錯誤或成功訊息
+        // エラーや成功メッセージをクリア
         responseText.textContent = "返信を生成中...";
         errorBox.style.display = "none"; 
-        generateBtn.disabled = true; // 避免多次點擊
+        generateBtn.disabled = true; // 複数回のクリックを防止
 
         try {
-            console.log("📤 發送請求:", {
+            console.log("📤 リクエスト送信:", {
                 purpose: selectedPurpose,
                 tone: selectedTone,
                 language: selectedLanguage,
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }),
             });
 
-            console.log("🔄 伺服器回應:", response);
+            console.log("🔄 サーバーの応答:", response);
 
             if (!response.ok) {
                 const errorData = await response.json();
@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error(errorText.textContent);
             }
 
-            // 確保 JSON 解析成功
+            // JSONの解析が成功しているか確認
             const responseData = await response.json();
-            console.log("✅ 解析後的回應:", responseData);
+            console.log("✅ 解析後のレスポンス:", responseData);
 
             responseText.textContent = responseData.email || "エラーが発生しました。";
         } catch (error) {
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorText.textContent = "エラー：" + error.message;
             errorBox.style.display = "block";
         } finally {
-            generateBtn.disabled = false; // 恢復按鈕點擊
+            generateBtn.disabled = false; // ボタンを再度有効化
         }
     });
 
